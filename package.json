@@ -4,7 +4,10 @@
   "description": "## Your Task",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/seed.js",
+    "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +21,8 @@
     "express-session": "^1.18.0",
     "mysql2": "^3.9.3",
     "sequelize": "^6.37.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
