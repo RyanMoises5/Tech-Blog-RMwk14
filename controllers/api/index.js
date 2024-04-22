@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const eventRoutes = require('./eventRoutes');
 const userRoutes = require('./userRoutes');
-const subRoutes = require('./subRoutes')
+const postRoutes = require('./postRoutes');
+const commentRoutes = require('./commentRoutes')
 
 // localhost/api/...
 
-router.use('/events', eventRoutes);
-router.use('/users', userRoutes)
-router.use('/subs', subRoutes)
+router.use('/user', userRoutes)
+router.use('/post', postRoutes);
+router.use('/comment', commentRoutes)
 
 module.exports = router;
 
