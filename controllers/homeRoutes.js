@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     res.render('home', {
+      logged_in: req.session.logged_in,
       active_page: 'home',
     })
   } catch (err) {
@@ -15,7 +16,9 @@ router.get('/', async (req, res) => {
 // Get route for single post
 router.get('/posts/:id', async (req, res) => {
   try {
-    res.render('post')
+    res.render('post', {
+      logged_in: req.session.logged_in
+    })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -25,6 +28,7 @@ router.get('/posts/:id', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     res.render('dashboard', {
+      logged_in: req.session.logged_in,
       active_page: 'dashboard'
     })
   } catch (err) {
@@ -35,6 +39,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
 // Get route for login
 router.get('/login', async (req, res) => {
   try {
+    if (req.session.logged_in) {
+      res.redirect('/');
+    }
+
     res.render('login', {
       active_page: 'login'
     })
@@ -46,7 +54,9 @@ router.get('/login', async (req, res) => {
 // Get route for sign up
 router.get('/signup', async (req, res) => {
   try {
-    res.render('signup')
+    res.render('signup', {
+      logged_in: req.session.logged_in
+    })
   } catch (err) {
     res.status(500).json(err);
   }

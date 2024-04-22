@@ -11,21 +11,31 @@
         <h2>Title:TechBlog</h2>
             {{#if_equals active_page 'home'}}
               <b><a href="/">Home</a></b>
-              {{else}}
+            {{else}}
               <a href="/">Home</a>
             {{/if_equals}}
-            {{#if_equals active_page 'dashboard'}}
-              <b><a href="/dashboard">Dashboard</a></b>
+
+            {{#if logged_in}}
+              {{#if_equals active_page 'dashboard'}}
+                <b><a href="/dashboard">Dashboard</a></b>
               {{else}}
-              <a href="/dashboard">Dashboard</a>
-            {{/if_equals}}
-            {{#if_equals active_page 'login'}}
-              <b><a href="/login">Login</a></b>
+                <a href="/dashboard">Dashboard</a>
+              {{/if_equals}}
+              <a href="#" id="logout">Logout</a>
+            {{else}}
+              {{#if_equals active_page 'login'}}
+                <b><a href="/login">Login</a></b>
               {{else}}
-              <a href="/login">Login</a>
-            {{/if_equals}}
+                <a href="/login">Login</a>
+              {{/if_equals}}
+            {{/if}}
+
       </div>
     </nav>
   {{{ body }}}
+
+  {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 </html>
