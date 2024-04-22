@@ -6,6 +6,26 @@
   <title>TechBlog</title>
 </head>
 <body>
+    <nav>
+      <div class="nav-wrapper">
+        <h2>Title:TechBlog</h2>
+            {{#if_equals active_page 'home'}}
+              <b><a href="/">Home</a></b>
+              {{else}}
+              <a href="/">Home</a>
+            {{/if_equals}}
+            {{#if_equals active_page 'dashboard'}}
+              <b><a href="/dashboard">Dashboard</a></b>
+              {{else}}
+              <a href="/dashboard">Dashboard</a>
+            {{/if_equals}}
+            {{#if_equals active_page 'login'}}
+              <b><a href="/login">Login</a></b>
+              {{else}}
+              <a href="/login">Login</a>
+            {{/if_equals}}
+      </div>
+    </nav>
   {{{ body }}}
 </body>
 </html>
