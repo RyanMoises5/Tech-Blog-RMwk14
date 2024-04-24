@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechBlog</title>
+  <link rel="stylesheet" href="/css/custom.css">
 </head>
+
 <body>
-    <nav>
-      <div class="nav-wrapper">
+    <nav class="container">
+      <div>
         <h2>Title:TechBlog</h2>
             {{#if_equals active_page 'home'}}
               <b><a href="/">Home</a></b>
@@ -15,12 +17,13 @@
               <a href="/">Home</a>
             {{/if_equals}}
 
+            {{#if_equals active_page 'dashboard'}}
+              <b><a href="/dashboard">Dashboard</a></b>
+            {{else}}
+              <a href="/dashboard">Dashboard</a>
+            {{/if_equals}}
+
             {{#if logged_in}}
-              {{#if_equals active_page 'dashboard'}}
-                <b><a href="/dashboard">Dashboard</a></b>
-              {{else}}
-                <a href="/dashboard">Dashboard</a>
-              {{/if_equals}}
               <a href="#" id="logout">Logout</a>
             {{else}}
               {{#if_equals active_page 'login'}}
@@ -32,7 +35,10 @@
 
       </div>
     </nav>
-  {{{ body }}}
+
+  <div class="container">  
+    {{{ body }}}
+  </div>
 
   {{#if logged_in}}
     <script src="/js/logout.js"></script>

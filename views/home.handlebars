@@ -1,1 +1,5 @@
-PLACEHOLDER FOR HOME
+{{#each posts as |post|}}
+  <p>{{title}}
+  Posted by {{user.username}} by {{createdAt}}</p>
+  <p>{{text}}</p>
+{{/each}}
