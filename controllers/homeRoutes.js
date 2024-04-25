@@ -58,9 +58,17 @@ router.get('/post/:id', async (req, res) => {
 // Get route for dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
+    const postsData = await Post.findAll({
+      where: {
+        userId: req.session.user_id
+      }
+    })
+    const posts = postsData.map((x) => x.get({ plain: true }))
+
     res.render('dashboard', {
       logged_in: req.session.logged_in,
-      active_page: 'dashboard'
+      active_page: 'dashboard',
+      posts
     })
   } catch (err) {
     res.status(500).json(err);
