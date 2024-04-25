@@ -39,6 +39,30 @@ const deletePost = async (e) => {
   }
 }
 
+// Update post
+const updatePost = async (e) => {
+  if (e.target.hasAttribute('data-id')) {
+    e.preventDefault();
+    const postId = e.target.getAttribute('data-id');
+    const title = document.querySelector('#post-title').value.trim();
+    const text = document.querySelector('#post-text').value.trim();
+
+    console.log(postId, title, text)
+    
+    const response = await fetch(`/api/post/update/${postId}`, {
+      method: 'PUT',
+      body: JSON.stringify({ title, text }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+  
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert("Error when deleting post");
+    }
+  }
+}
+
 document 
   .querySelector('.comment-button')
   .addEventListener('click', commentFormHandler)
@@ -46,3 +70,7 @@ document
 document
   .querySelector('.delete-post-button')
   .addEventListener('click', deletePost)
+
+document
+  .querySelector('.update-post-button')
+  .addEventListener('click', updatePost)

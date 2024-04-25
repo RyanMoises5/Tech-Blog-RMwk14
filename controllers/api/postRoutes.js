@@ -19,7 +19,6 @@ router.post('/new', withAuth, async (req, res) => {
 
 router.delete('/delete/:id', withAuth, async (req, res) => {
   try {
-    console.log(`-----------${req.params.id}----------`)
     const postDelete = await Post.destroy({
       where: {
         id: req.params.id
@@ -37,9 +36,27 @@ router.delete('/delete/:id', withAuth, async (req, res) => {
   }
 })
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.put('/update/:id', withAuth, async (req, res) => {
+  try {
+    console.log(`-----------${req.params.id}----------`)
+    const postDelete = await Post.update({
+      title: req.body.title,
+      text: req.body.text
+    }, {
+      where: {
+        id: req.params.id
+      }
+    })
+  
+    if (!postDelete) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
 
+    res.status(200).json(postDelete);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 })
-
 
 module.exports = router;
