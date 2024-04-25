@@ -61,7 +61,7 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 The following link is the Heroku URL to the completed assignment:
 
-()
+(https://tech-blog-rmwk14-5128741e6939.herokuapp.com/)
 
 The following link is the GitHub repository where the associated files are located:
 
