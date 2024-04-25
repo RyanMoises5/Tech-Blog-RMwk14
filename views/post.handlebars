@@ -2,7 +2,7 @@
   <h2>{{post.title}}</h2>
   <p>Posted by: {{post.user.username}}</p>
   <p>On: {{post.createdAt}}</p>
-  <div class="container-fluid bg-primary-subtle rounded-top-3 py-1"></div>
+  <div class="bg-primary-subtle rounded-top-3 py-1"></div>
     <p>{{post.text}}</p>
   </div>
 </div>
@@ -17,5 +17,9 @@
     <button class="comment-button" type="submit" data-id="{{post.id}}">Post your comment</button>
   </form>
 </div>
+
+{{#each comments as |comment|}}
+{{> comment-details}}
+{{/each}}
 
 <script src="/js/postComment.js"></script>
