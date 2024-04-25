@@ -34,6 +34,7 @@ router.get('/post/:id', async (req, res) => {
     });
     const post = postData.get({ plain: true });
 
+    // Get comments for that post
     const commentsData = await Comment.findAll({
       where: {
         postId: req.params.id
@@ -55,7 +56,7 @@ router.get('/post/:id', async (req, res) => {
   }
 })
 
-// Get route for dashboard
+// Get route for dashboard (lists posts made by user)
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postsData = await Post.findAll({

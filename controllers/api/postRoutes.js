@@ -4,6 +4,7 @@ const { Post } = require('../../models');
 
 // localhost/api/post/...
 
+// Create new post
 router.post('/new', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -17,6 +18,7 @@ router.post('/new', withAuth, async (req, res) => {
   }
 });
 
+// Delete post by id
 router.delete('/delete/:id', withAuth, async (req, res) => {
   try {
     const postDelete = await Post.destroy({
@@ -36,6 +38,7 @@ router.delete('/delete/:id', withAuth, async (req, res) => {
   }
 })
 
+// Update post by id
 router.put('/update/:id', withAuth, async (req, res) => {
   try {
     console.log(`-----------${req.params.id}----------`)

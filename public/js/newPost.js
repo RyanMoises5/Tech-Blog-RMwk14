@@ -1,3 +1,4 @@
+// Collects inputs form form and creates new post
 const postFormHandler = async (e) => {
   e.preventDefault();
 

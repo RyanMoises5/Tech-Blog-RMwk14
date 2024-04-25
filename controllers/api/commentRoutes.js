@@ -4,6 +4,7 @@ const { Comment } = require('../../models');
 
 // localhost/api/comment/...
 
+// Post new comment
 router.post('/new', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
