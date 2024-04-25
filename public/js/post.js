@@ -56,7 +56,7 @@ const updatePost = async (e) => {
     })
   
     if (response.ok) {
-      document.location.reload();
+      document.location.replace('/dashboard');
     } else {
       alert("Error when deleting post");
     }
