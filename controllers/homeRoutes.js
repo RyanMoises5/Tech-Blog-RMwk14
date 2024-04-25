@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
       }
     })
     const posts = postsData.map((x) =>  x.get({ plain: true }))
-    
+
     res.render('home', {
       logged_in: req.session.logged_in,
       active_page: 'home',
@@ -24,10 +24,19 @@ router.get('/', async (req, res) => {
 })
 
 // Get route for single post
-router.get('/posts/:id', async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: {
+        model: User,
+        attributes: ['username']
+      }
+    });
+    const post = postData.get({ plain: true });
+
     res.render('post', {
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      post
     })
   } catch (err) {
     res.status(500).json(err);
